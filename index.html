@@ -5,63 +5,248 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Смартфоны vivo</title>
 <style>
-:root{--bg:#f6f8ff;--card:#fff;--text:#1a1d2e;--muted:#5b6078;--accent:#415fff;--accent2:#7b61ff}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141f;--card:#1c1f2e;--text:#eef0ff;--muted:#a0a5c0}}
+:root{--bg:#f6f8ff;--card:#fff;--text:#1a1d2e;--muted:#5b6078;--accent:#415fff;--accent2:#7b61ff;--line:#e2e6f5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141f;--card:#1c1f2e;--text:#eef0ff;--muted:#a0a5c0;--line:#2c3047}}
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-header{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-align:center;padding:48px 20px}
-header h1{margin:0 0 8px;font-size:2.4rem;letter-spacing:2px}
-header p{margin:0;opacity:.9}
-main{max-width:900px;margin:0 auto;padding:24px 16px}
-h2{margin:32px 0 12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.card{background:var(--card);border-radius:16px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.08);cursor:pointer;transition:transform .2s}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:10px 12px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--text);padding:6px 12px;border-radius:20px;font-size:.9rem}
+nav a:hover{background:var(--accent);color:#fff}
+header{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-align:center;padding:56px 20px}
+header h1{margin:0 0 8px;font-size:2.8rem;letter-spacing:3px}
+header p{margin:0;opacity:.92}
+main{max-width:960px;margin:0 auto;padding:8px 16px 24px}
+section{padding-top:8px}
+h2{margin:34px 0 12px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:14px}
+.stat{background:var(--card);border-radius:14px;padding:16px;text-align:center}
+.stat b{display:block;font-size:1.6rem;color:var(--accent)}
+.stat span{color:var(--muted);font-size:.85rem}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.filters button,button.btn{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:.95rem;cursor:pointer}
+.filters button.on,button.btn{background:var(--accent);color:#fff;border-color:var(--accent)}
+button.btn{border-radius:12px;padding:12px 20px;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);cursor:pointer;transition:transform .2s}
 .card:hover{transform:translateY(-4px)}
-.card h3{margin:0 0 6px;color:var(--accent)}
-.card p{margin:0;color:var(--muted);font-size:.95rem}
-.more{display:none;margin-top:10px;font-size:.9rem}
+.pic{height:190px;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#e9edff,#d8dcff);position:relative}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pic{background:linear-gradient(160deg,#262a45,#1d2038)}}
+.pic img{max-height:100%;max-width:100%;object-fit:contain}
+.fake{width:78px;height:150px;border-radius:16px;border:5px solid #2b2f4a;background:linear-gradient(160deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:1.6rem;position:relative}
+.fake::before{content:"";position:absolute;top:6px;width:8px;height:8px;border-radius:50%;background:#2b2f4a}
+.body{padding:14px}
+.body h3{margin:0;color:var(--accent)}
+.tag{display:inline-block;font-size:.75rem;background:var(--line);padding:2px 8px;border-radius:10px;margin:6px 0;color:var(--muted)}
+.body p{margin:0;color:var(--muted);font-size:.92rem}
+.more{display:none;margin-top:8px;font-size:.88rem;color:var(--text)}
 .card.open .more{display:block}
-.fact{background:var(--card);border-radius:16px;padding:20px;text-align:center}
-button{background:var(--accent);color:#fff;border:0;border-radius:12px;padding:12px 20px;font-size:1rem;cursor:pointer;margin-top:10px}
-#factText{font-size:1.1rem;min-height:3em}
+.line{border-left:3px solid var(--accent);margin-left:8px;padding-left:16px}
+.line div{margin-bottom:14px}
+.line b{color:var(--accent)}
+.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.gl{background:var(--card);border-radius:14px;padding:14px}
+.gl b{color:var(--accent)}
+.box{background:var(--card);border-radius:16px;padding:20px}
+.opts button{display:block;width:100%;text-align:left;margin:8px 0;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:1rem;cursor:pointer}
+.opts button:hover{border-color:var(--accent)}
+#factText{font-size:1.1rem;min-height:3em;text-align:center}
+.center{text-align:center}
 footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
 </style>
 </head>
 <body>
+<nav>
+  <a href="#brand">О бренде</a><a href="#history">История</a><a href="#models">Модели</a>
+  <a href="#os">OriginOS</a><a href="#tech">Технологии</a><a href="#quiz">Тест</a><a href="#fact">Факты</a>
+</nav>
 <header>
   <h1>vivo</h1>
   <p>Смартфоны, которые любят за камеру и дизайн</p>
 </header>
 <main>
+
+<section id="brand">
   <h2>О бренде</h2>
-  <p>vivo — китайская компания, которая делает смартфоны с 2009 года. Её телефоны известны яркими экранами, тонкими корпусами и упором на фото и видео.</p>
-
-  <h2>Линейки (нажми на карточку)</h2>
-  <div class="grid">
-    <div class="card"><h3>X</h3><p>Флагманы</p><p class="more">Самые мощные модели с упором на камеру. Часто делаются вместе с оптикой ZEISS.</p></div>
-    <div class="card"><h3>V</h3><p>Стиль и селфи</p><p class="more">Красивый дизайн и хорошая фронтальная камера. Для тех, кто любит снимать себя и друзей.</p></div>
-    <div class="card"><h3>Y</h3><p>Доступные</p><p class="more">Простые и недорогие смартфоны для повседневных задач: звонки, соцсети, видео.</p></div>
-    <div class="card"><h3>T</h3><p>Золотая середина</p><p class="more">Баланс цены и возможностей: хороший экран и скорость без переплаты.</p></div>
-    <div class="card"><h3>iQOO</h3><p>Для игр</p><p class="more">Отдельный игровой бренд vivo: упор на производительность и быструю зарядку.</p></div>
+  <p>vivo — китайская компания, которая делает смартфоны с 2009 года. Её телефоны известны яркими экранами, тонкими корпусами и упором на фото и видео. Бренд выпускает модели для разных бюджетов: от простых до флагманов.</p>
+  <div class="stats">
+    <div class="stat"><b>2009</b><span>год основания</span></div>
+    <div class="stat"><b>5</b><span>главных линеек</span></div>
+    <div class="stat"><b>ZEISS</b><span>партнёр по оптике</span></div>
+    <div class="stat"><b>iQOO</b><span>игровой суббренд</span></div>
   </div>
+</section>
 
+<section id="history">
+  <h2>История</h2>
+  <div class="line">
+    <div><b>2009</b> — компания vivo основана в Китае.</div>
+    <div><b>2010-е</b> — бренд выходит на рынки Азии и начинает делать упор на камеры и тонкий дизайн.</div>
+    <div><b>Партнёрство с ZEISS</b> — флагманы серии X получают совместно разработанную оптику.</div>
+    <div><b>Складные телефоны</b> — появляется линейка X Fold с гибким экраном.</div>
+    <div><b>iQOO</b> — vivo запускает отдельный бренд для игровых смартфонов.</div>
+    <div><b>2025</b> — выходят складной X Fold5 и V60, а осенью флагманы X300, X300 Pro и игровой iQOO 15.</div>
+    <div><b>2026</b> — линейку дополняют X300 Ultra, складной X Fold6 и iQOO 15 Ultra, а осенью приходит оболочка OriginOS 7.</div>
+  </div>
+</section>
+
+<section id="models">
+  <h2>Модели</h2>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+  <p style="color:var(--muted);font-size:.85rem">Нажми на карточку, чтобы узнать больше. Конкретные характеристики лучше смотреть на официальном сайте vivo.</p>
+</section>
+
+<section id="os">
+  <h2>OriginOS: программа телефона</h2>
+  <div class="gloss">
+    <div class="gl"><b>OriginOS 6</b> — вышла осенью 2025 вместе с флагманами X300 и iQOO 15.</div>
+    <div class="gl"><b>OriginOS 7</b> — новая версия на Android 17. Осенью 2026 её получают больше 60 моделей vivo и iQOO, первая волна обновлений началась 9 октября.</div>
+    <div class="gl"><b>Новые фотопрофили</b> — в обновлении появляются цветовые стили камеры и переработанный интерфейс съёмки.</div>
+  </div>
+</section>
+
+<section id="series">
+  <h2>Чем отличаются линейки</h2>
+  <div class="gloss">
+    <div class="gl"><b>X</b> — флагманы: лучшая камера и самые мощные процессоры.</div>
+    <div class="gl"><b>V</b> — стильные телефоны с упором на селфи и внешний вид.</div>
+    <div class="gl"><b>Y</b> — доступные модели для повседневных задач.</div>
+    <div class="gl"><b>T</b> — золотая середина по цене и возможностям.</div>
+    <div class="gl"><b>iQOO</b> — игровые модели с упором на скорость и зарядку.</div>
+  </div>
+</section>
+
+<section id="tech">
+  <h2>Технологии простыми словами</h2>
+  <div class="gloss">
+    <div class="gl"><b>AMOLED-экран</b> — яркая картинка и глубокий чёрный цвет.</div>
+    <div class="gl"><b>ZEISS</b> — немецкая оптическая компания, помогает настраивать камеры.</div>
+    <div class="gl"><b>Быстрая зарядка</b> — телефон заряжается заметно быстрее обычного.</div>
+    <div class="gl"><b>Портретный режим</b> — размывает фон за человеком, как на профессиональной камере.</div>
+    <div class="gl"><b>Ночная съёмка</b> — режим, который делает фото в темноте светлее и чище.</div>
+    <div class="gl"><b>Оболочка</b> — программная «обёртка» Android, которую vivo делает сама.</div>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2>Тест: какой vivo тебе подходит?</h2>
+  <div class="box" id="quizBox"></div>
+</section>
+
+<section id="fact">
   <h2>Случайный факт</h2>
-  <div class="fact">
+  <div class="box center">
     <div id="factText">Нажми кнопку 👇</div>
-    <button onclick="newFact()">Показать факт</button>
+    <button class="btn" onclick="newFact()">Показать факт</button>
   </div>
+</section>
+
 </main>
 <footer>Проект сделан в Кванториуме · не является официальным сайтом vivo</footer>
+
 <script>
-document.querySelectorAll('.card').forEach(function(c){
-  c.addEventListener('click',function(){c.classList.toggle('open')});
-});
+/* ===== МОДЕЛИ ===== */
+/* Фото: положи картинки в папку img рядом с index.html и назови как в поле img.
+   Если файла нет, покажется нарисованный телефон. */
+var models=[
+  {name:'vivo X300 Pro',s:'X',tag:'Новинка 2025',y:'new',img:'img/x300pro.jpg',em:'📸',d:'Флагман конца 2025 года.',m:'Вышел в Китае в октябре 2025. Среди главных особенностей: 200-мегапиксельная телефотокамера и процессор Dimensity 9500. В других странах продаётся с конца 2025 и начала 2026.'},
+  {name:'vivo X300 Ultra',s:'X',tag:'Новинка 2026',y:'new',img:'img/x300ultra.jpg',em:'🔭',d:'Самый «фотографический» в линейке X300.',m:'Модель 2026 года для тех, кому нужна лучшая камера. Есть версия со спутниковой связью.'},
+  {name:'vivo X Fold5',s:'X',tag:'Складной 2025',y:'new',img:'img/xfold5.jpg',em:'📖',d:'Складной флагман 2025 года.',m:'В Индии вышел летом 2025: батарея 6000 мАч и тройная камера 50 Мп. В 2026 году появился и следующий складной, X Fold6.'},
+  {name:'vivo V60',s:'V',tag:'Новинка 2025',y:'new',img:'img/v60.jpg',em:'🤳',d:'Стильная модель серии V.',m:'В Индии вышла в августе 2025. В рекламе делали упор на портреты ZEISS. Есть и упрощённая версия V60 Lite.'},
+  {name:'iQOO 15',s:'iQOO',tag:'Игровой 2025',y:'new',img:'img/iqoo15.jpg',em:'🎮',d:'Игровой флагман на Snapdragon 8 Elite Gen 5.',m:'Батарея на 7000 мАч и отдельный игровой чип Q3. Вышел осенью 2025.'},
+  {name:'iQOO 15 Ultra',s:'iQOO',tag:'Новинка 2026',y:'new',img:'img/iqoo15ultra.jpg',em:'🚀',d:'Ещё более мощная версия iQOO 15.',m:'Вышла в 2026 году. Для тех, кто хочет максимум скорости в играх.'},
+  {name:'vivo X200 Pro',s:'X',tag:'Флагман',img:'img/x200pro.jpg',em:'📸',d:'Флагман с упором на камеру.',m:'Подходит тем, кто много снимает фото и видео и хочет максимум от телефона.'},
+  {name:'vivo X Fold3',s:'X',tag:'Складной',img:'img/xfold3.jpg',em:'📖',d:'Телефон, который раскрывается в планшет.',m:'Гибкий экран удобен для чтения, видео и работы сразу с двумя приложениями.'},
+  {name:'vivo V40',s:'V',tag:'Стиль',img:'img/v40.jpg',em:'🤳',d:'Тонкий корпус и красивый дизайн.',m:'Хороший выбор для селфи, соцсетей и тех, кому важна внешность телефона.'},
+  {name:'vivo Y100',s:'Y',tag:'Бюджетный',img:'img/y100.jpg',em:'💬',d:'Простой телефон на каждый день.',m:'Хватает для звонков, мессенджеров, видео и учёбы без лишних трат.'},
+  {name:'vivo T3',s:'T',tag:'Баланс',img:'img/t3.jpg',em:'⚖️',d:'Золотая середина по цене и скорости.',m:'Подойдёт, если не хочется переплачивать за флагман, но нужен хороший экран и скорость.'},
+  {name:'iQOO 12',s:'iQOO',tag:'Игровой',img:'img/iqoo12.jpg',em:'🎮',d:'Мощный телефон для игр.',m:'Упор на производительность и быструю зарядку. Хорош для долгих игровых сессий.'}
+];
+var seriesList=['Все','Новинки','X','V','Y','T','iQOO'];
+var current='Все';
+
+function render(){
+  var f=document.getElementById('filters');
+  f.innerHTML='';
+  seriesList.forEach(function(s){
+    var b=document.createElement('button');
+    b.textContent=s;
+    if(s===current)b.className='on';
+    b.onclick=function(){current=s;render()};
+    f.appendChild(b);
+  });
+  var g=document.getElementById('grid');
+  g.innerHTML='';
+  models.filter(function(m){return current==='Все'||(current==='Новинки'?m.y==='new':m.s===current)}).forEach(function(m){
+    var c=document.createElement('div');
+    c.className='card';
+    c.innerHTML='<div class="pic"><img src="'+m.img+'" alt="'+m.name+'"></div>'+
+      '<div class="body"><h3>'+m.name+'</h3><span class="tag">'+m.tag+'</span><p>'+m.d+'</p><p class="more">'+m.m+'</p></div>';
+    var img=c.querySelector('img');
+    img.onerror=function(){
+      var d=document.createElement('div');
+      d.className='fake';
+      d.textContent=m.em;
+      img.replaceWith(d);
+    };
+    c.onclick=function(){c.classList.toggle('open')};
+    g.appendChild(c);
+  });
+}
+render();
+
+/* ===== ТЕСТ ===== */
+var questions=[
+  {q:'Для чего тебе телефон в первую очередь?',a:[
+    ['Фото и видео',{X:2}],['Селфи и соцсети',{V:2}],['Звонки и учёба',{Y:2}],['Игры',{iQOO:2}]]},
+  {q:'Какой у тебя бюджет?',a:[
+    ['Не ограничен',{X:1,iQOO:1}],['Средний',{V:1,T:1}],['Небольшой',{Y:1,T:1}]]},
+  {q:'Что для тебя важнее всего?',a:[
+    ['Топовая камера',{X:1}],['Красивый дизайн',{V:1}],['Низкая цена',{Y:1}],['Баланс всего',{T:1}],['Мощность',{iQOO:1}]]}
+];
+var results={
+  X:'Серия X: флагманы с лучшей камерой. Смотри X300 Pro или складной X Fold5.',
+  V:'Серия V: стильные телефоны для селфи. Смотри vivo V60.',
+  Y:'Серия Y: простые и доступные. Смотри vivo Y100.',
+  T:'Серия T: золотая середина. Смотри vivo T3.',
+  iQOO:'iQOO: игровые смартфоны. Смотри iQOO 15.'
+};
+var step=0,score={};
+function quiz(){
+  var box=document.getElementById('quizBox');
+  if(step>=questions.length){
+    var best='X',max=-1;
+    for(var k in results){var v=score[k]||0;if(v>max){max=v;best=k}}
+    box.innerHTML='<h3>Твой результат</h3><p>'+results[best]+'</p><button class="btn" onclick="step=0;score={};quiz()">Пройти заново</button>';
+    return;
+  }
+  var q=questions[step];
+  box.innerHTML='<b>Вопрос '+(step+1)+' из '+questions.length+'</b><h3>'+q.q+'</h3><div class="opts"></div>';
+  var o=box.querySelector('.opts');
+  q.a.forEach(function(opt){
+    var b=document.createElement('button');
+    b.textContent=opt[0];
+    b.onclick=function(){
+      for(var k in opt[1])score[k]=(score[k]||0)+opt[1][k];
+      step++;quiz();
+    };
+    o.appendChild(b);
+  });
+}
+quiz();
+
+/* ===== ФАКТЫ ===== */
 var facts=[
   'vivo основана в 2009 году.',
   'У vivo есть игровой суббренд iQOO.',
   'Камеры флагманов vivo серии X разрабатывались вместе с ZEISS.',
   'Название «vivo» напоминает латинское слово «жить».',
-  'Смартфоны vivo продаются во многих странах Азии, Европы и Африки.'
+  'Смартфоны vivo продаются во многих странах Азии, Европы и Африки.',
+  'У vivo есть складные смартфоны серии X Fold.',
+  'Серия V у vivo известна упором на селфи-камеру.',
+  'В октябре 2025 vivo представила флагманы X300 и X300 Pro.',
+  'Оболочку OriginOS 7 осенью 2026 получают больше 60 моделей vivo и iQOO.'
 ];
 function newFact(){
   document.getElementById('factText').textContent=facts[Math.floor(Math.random()*facts.length)];
