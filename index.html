@@ -53,21 +53,44 @@ button.btn{border-radius:12px;padding:12px 20px;margin-top:10px}
 #factText{font-size:1.1rem;min-height:3em;text-align:center}
 .center{text-align:center}
 footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
+#logo{cursor:pointer;user-select:none;-webkit-user-select:none}
+#oppo{--accent:#1d9e6f;--accent2:#14c28c}
+#oppo h2{color:var(--accent)}
+.egg{background:linear-gradient(135deg,#1d9e6f,#14c28c);color:#fff;border-radius:16px;padding:20px;text-align:center;margin-top:34px}
+.egg h2{color:#fff!important;margin:0 0 6px}
+.egg p{margin:0;opacity:.95}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(120px);background:#1d9e6f;color:#fff;padding:12px 22px;border-radius:30px;transition:transform .4s;z-index:20;white-space:nowrap}
+#toast.show{transform:translateX(-50%) translateY(0)}
+.brand h2{color:var(--accent)}
+:root[data-theme="dark"]{--bg:#12141f;--card:#1c1f2e;--text:#eef0ff;--muted:#a0a5c0;--line:#2c3047}
+:root[data-theme="dark"] .pic{background:linear-gradient(160deg,#262a45,#1d2038)}
+header{position:relative}
+#themeBtn{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.2);color:#fff;border:0;border-radius:50%;width:42px;height:42px;font-size:1.2rem;cursor:pointer}
+.opts button.ok{background:#2fb37a;color:#fff;border-color:#2fb37a}
+.opts button.bad{background:#e5484d;color:#fff;border-color:#e5484d}
+.gq{background:var(--bg);border-radius:12px;padding:14px;margin:10px 0;font-size:1.05rem}
+.calc label{display:block;margin:10px 0;font-size:.95rem;color:var(--muted)}
+.calc input{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:1rem;margin-top:4px}
+.chip{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:20px;padding:6px 12px;margin:4px 4px 4px 0;cursor:pointer;font-size:.9rem}
+#cRes{font-size:1.1rem;margin:12px 0 0}
+#brandTitle{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+#eggCount{display:inline-block;margin-top:6px}
 </style>
 </head>
 <body>
 <nav>
   <a href="#brand">О бренде</a><a href="#history">История</a><a href="#models">Модели</a>
-  <a href="#os">OriginOS</a><a href="#tech">Технологии</a><a href="#quiz">Тест</a><a href="#fact">Факты</a>
+  <a href="#os">OriginOS</a><a href="#tech">Технологии</a><a href="#choose">Советы</a><a href="#quiz">Тест</a><a href="#game">Игра</a><a href="#fact">Факты</a><a href="#oppo" id="navOppo" hidden>🥚 OPPO</a>
 </nav>
 <header>
-  <h1>vivo</h1>
+  <button id="themeBtn" title="Тема">🌓</button>
+  <h1 id="logo">vivo</h1>
   <p>Смартфоны, которые любят за камеру и дизайн</p>
 </header>
 <main>
 
 <section id="brand">
-  <h2>О бренде</h2>
+  <h2 id="brandTitle">О бренде</h2>
   <p>vivo — китайская компания, которая делает смартфоны с 2009 года. Её телефоны известны яркими экранами, тонкими корпусами и упором на фото и видео. Бренд выпускает модели для разных бюджетов: от простых до флагманов.</p>
   <div class="stats">
     <div class="stat"><b>2009</b><span>год основания</span></div>
@@ -129,21 +152,119 @@ footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
   </div>
 </section>
 
+<section id="choose">
+  <h2>Как выбрать смартфон</h2>
+  <div class="gloss">
+    <div class="gl"><b>Камера</b> — смотри не на мегапиксели, а на размер сенсора, стабилизацию и реальные фото из обзоров.</div>
+    <div class="gl"><b>Батарея</b> — важна не только ёмкость, но и мощность зарядки. Как долго телефон заряжается, можно посчитать ниже.</div>
+    <div class="gl"><b>Экран</b> — AMOLED даёт яркие цвета, а частота 120 Гц делает прокрутку плавнее.</div>
+    <div class="gl"><b>Память</b> — для обычной жизни хватает 8 ГБ оперативной. Если много снимаешь, бери от 256 ГБ накопителя.</div>
+    <div class="gl"><b>Обновления</b> — проверь, сколько лет производитель обещает выпускать обновления. У Samsung для серии S26 это 7 лет.</div>
+    <div class="gl"><b>Цель</b> — для игр бери мощный чип, для фото камерофон, для учёбы подойдёт недорогая модель.</div>
+  </div>
+
+  <h2>Словарь характеристик</h2>
+  <div class="gloss">
+    <div class="gl"><b>мАч</b> — ёмкость батареи. Чем больше, тем дольше работает телефон.</div>
+    <div class="gl"><b>Гц</b> — сколько раз в секунду обновляется картинка на экране. 120 Гц плавнее, чем 60.</div>
+    <div class="gl"><b>ОЗУ (RAM)</b> — оперативная память, которая держит открытые приложения.</div>
+    <div class="gl"><b>Мп</b> — мегапиксели камеры. Детальность снимка, но не гарантия качества.</div>
+    <div class="gl"><b>IP68</b> — защита от пыли и погружения в воду.</div>
+    <div class="gl"><b>NFC</b> — бесконтактная оплата и обмен данными при прикосновении.</div>
+    <div class="gl"><b>5G</b> — современная сотовая связь с большой скоростью интернета.</div>
+    <div class="gl"><b>Чип (процессор)</b> — «мозг» телефона: Snapdragon, Dimensity, чипы Apple.</div>
+  </div>
+
+  <h2>Калькулятор зарядки</h2>
+  <div class="box calc">
+    <label>Батарея, мАч<input id="cBat" type="number" value="6000" min="1"></label>
+    <label>Мощность зарядки, Вт<input id="cW" type="number" value="90" min="1"></label>
+    <div>
+      <button class="chip" onclick="setCharge(6330,100)">Xiaomi 17</button>
+      <button class="chip" onclick="setCharge(6800,90)">Xiaomi 17 Ultra</button>
+    </div>
+    <button class="btn" onclick="calcCharge()">Посчитать</button>
+    <p id="cRes"></p>
+  </div>
+</section>
+
 <section id="quiz">
   <h2>Тест: какой vivo тебе подходит?</h2>
   <div class="box" id="quizBox"></div>
 </section>
 
+<section id="game">
+  <h2>Игра: угадай бренд</h2>
+  <div class="box" id="gameBox"></div>
+</section>
+
 <section id="fact">
-  <h2>Случайный факт</h2>
+  <h2 id="factTitle">Случайный факт</h2>
   <div class="box center">
     <div id="factText">Нажми кнопку 👇</div>
     <button class="btn" onclick="newFact()">Показать факт</button>
   </div>
 </section>
 
+<section id="oppo" hidden>
+  <div class="egg">
+    <h2>🥚 Пасхалка найдена!</h2>
+    <p>Секретный раздел про OPPO, ещё одного производителя смартфонов</p>
+  </div>
+
+  <h2>О бренде OPPO</h2>
+  <p>OPPO — китайская компания, основанная в 2004 году. Сначала она делала электронику, а затем стала известной смартфонами с хорошими камерами, быстрой зарядкой и тонким дизайном.</p>
+  <div class="stats">
+    <div class="stat"><b>2004</b><span>год основания</span></div>
+    <div class="stat"><b>Find</b><span>флагманы и складные</span></div>
+    <div class="stat"><b>Reno</b><span>серия для портретов</span></div>
+    <div class="stat"><b>Hasselblad</b><span>партнёр по камерам</span></div>
+  </div>
+
+  <h2>История OPPO</h2>
+  <div class="line">
+    <div><b>2004</b> — компания OPPO основана в Китае.</div>
+    <div><b>2008</b> — выпускает свои первые мобильные телефоны.</div>
+    <div><b>2019</b> — появляется серия Reno, которая делает упор на камеру и стиль.</div>
+    <div><b>2021</b> — выходит первый складной телефон серии Find N.</div>
+    <div><b>2025</b> — флагманы Find X9 и X9 Pro выходят с процессором Dimensity 9500 и оболочкой ColorOS 16.</div>
+    <div><b>2026</b> — серию Reno 15 и Find X9 Ultra с Find X9s.</div>
+  </div>
+
+  <h2>Модели OPPO</h2>
+  <div class="grid" id="oppoGrid"></div>
+  <p style="color:var(--muted);font-size:.85rem">Нажми на карточку, чтобы узнать больше. Точные характеристики смотри на официальном сайте OPPO.</p>
+
+  <h2>Линейки OPPO</h2>
+  <div class="gloss">
+    <div class="gl"><b>Find X</b> — флагманы с лучшей камерой и мощным процессором.</div>
+    <div class="gl"><b>Find N</b> — складные смартфоны.</div>
+    <div class="gl"><b>Reno</b> — стильные телефоны с хорошими портретами и селфи.</div>
+    <div class="gl"><b>A</b> — доступные модели для повседневных задач.</div>
+  </div>
+
+  <h2>Технологии OPPO</h2>
+  <div class="gloss">
+    <div class="gl"><b>ColorOS</b> — оболочка OPPO. Версия 16 основана на Android 16, получила дизайн Liquid Glass и вышла вместе с Find X9.</div>
+    <div class="gl"><b>Hasselblad</b> — шведская фотокомпания, помогает настраивать камеры серии Find X.</div>
+    <div class="gl"><b>SUPERVOOC</b> — название быстрой зарядки OPPO.</div>
+    <div class="gl"><b>Dimensity 9500</b> — мощный процессор MediaTek в Find X9 и X9 Pro.</div>
+  </div>
+
+  <h2>Факт про OPPO</h2>
+  <div class="box center">
+    <div id="oppoFact">Нажми кнопку 👇</div>
+    <button class="btn" onclick="oppoNewFact()">Показать факт</button>
+  </div>
+
+  <div class="center" style="margin-top:20px">
+    <button class="btn" onclick="lockOppo()">Спрятать пасхалку</button>
+  </div>
+</section>
+
 </main>
-<footer>Проект сделан в Кванториуме · не является официальным сайтом vivo</footer>
+<div id="toast">🥚 Пасхалка найдена!</div>
+<footer id="foot">Проект сделан в Кванториуме · не является официальным сайтом vivo<br><span id="eggCount">Пасхалки: 0 из 4</span></footer>
 
 <script>
 /* ===== МОДЕЛИ ===== */
@@ -251,6 +372,300 @@ var facts=[
 function newFact(){
   document.getElementById('factText').textContent=facts[Math.floor(Math.random()*facts.length)];
 }
+
+/* ===== ПАСХАЛКА OPPO ===== */
+/* Как включить: 5 раз быстро нажми на большой логотип vivo вверху
+   или напечатай на клавиатуре слово oppo */
+var oppoModels=[
+  {name:'OPPO Find X9 Pro',tag:'Новинка 2025',img:'img/findx9pro.jpg',em:'📸',d:'Флагман осени 2025 года.',m:'Вышел в октябре 2025. Процессор Dimensity 9500, камера, настроенная вместе с Hasselblad, и первая оболочка ColorOS 16.'},
+  {name:'OPPO Find X9 Ultra',tag:'Новинка 2026',img:'img/findx9ultra.jpg',em:'🔭',d:'Топовая версия линейки Find X9.',m:'Вышла в 2026 году вместе с моделью Find X9s.'},
+  {name:'OPPO Reno 15',tag:'Новинка 2026',img:'img/reno15.jpg',em:'🤳',d:'Стильный Reno с мощной камерой.',m:'Первые Reno с 200-мегапиксельной камерой. Фронтальная камера 50 Мп снимает видео в 4K.'},
+  {name:'OPPO Reno 15 Pro Mini',tag:'Компактный',img:'img/reno15promini.jpg',em:'📱',d:'Первая компактная модель Reno.',m:'Экран 6,59 дюйма. Подойдёт тем, кому не нравятся большие телефоны.'},
+  {name:'OPPO Find N5',tag:'Складной',img:'img/findn5.jpg',em:'📖',d:'Складной смартфон серии Find N.',m:'Раскрывается в планшет. Получает обновление до ColorOS 16.'},
+  {name:'OPPO Reno 14',tag:'Прошлое поколение',img:'img/reno14.jpg',em:'💚',d:'Модель Reno 2025 года.',m:'Предыдущее поколение серии Reno. Тоже получает ColorOS 16.'}
+];
+var og=document.getElementById('oppoGrid');
+oppoModels.forEach(function(m){
+  var c=document.createElement('div');
+  c.className='card';
+  c.innerHTML='<div class="pic"><img src="'+m.img+'" alt="'+m.name+'"></div>'+
+    '<div class="body"><h3>'+m.name+'</h3><span class="tag">'+m.tag+'</span><p>'+m.d+'</p><p class="more">'+m.m+'</p></div>';
+  var img=c.querySelector('img');
+  img.onerror=function(){
+    var d=document.createElement('div');
+    d.className='fake';
+    d.textContent=m.em;
+    img.replaceWith(d);
+  };
+  c.onclick=function(){c.classList.toggle('open')};
+  og.appendChild(c);
+});
+
+var oppoFacts=[
+  'OPPO основана в 2004 году.',
+  'Серия Reno появилась в 2019 году.',
+  'Камеры флагманов Find X делаются вместе с Hasselblad.',
+  'ColorOS 16 впервые вышла на смартфонах Find X9.',
+  'У OPPO есть складные смартфоны серии Find N.',
+  'Reno 15 стал первым Reno с 200-мегапиксельной камерой.'
+];
+function oppoNewFact(){
+  document.getElementById('oppoFact').textContent=oppoFacts[Math.floor(Math.random()*oppoFacts.length)];
+}
+
+var logoClicks=0,logoTimer=null,typed='';
+function unlockOppo(){
+  var s=document.getElementById('oppo');
+  var first=s.hidden;
+  s.hidden=false;
+  document.getElementById('navOppo').hidden=false;
+  if(first){
+    var t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show')},2500);
+    if(markFound('oppo')===4)setTimeout(trophy,2800);
+  }
+  setTimeout(function(){s.scrollIntoView({behavior:'smooth'})},200);
+}
+function lockOppo(){
+  document.getElementById('oppo').hidden=true;
+  document.getElementById('navOppo').hidden=true;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('logo').addEventListener('click',function(){
+  logoClicks++;
+  clearTimeout(logoTimer);
+  logoTimer=setTimeout(function(){logoClicks=0},1500);
+  if(logoClicks>=5){logoClicks=0;unlockOppo()}
+});
+document.addEventListener('keydown',function(e){
+  if(!e.key||e.key.length!==1)return;
+  typed=(typed+e.key.toLowerCase()).slice(-4);
+  if(typed==='oppo'){typed='';unlockOppo()}
+});
+
+/* ===== ЕЩЁ ПАСХАЛКИ: Samsung, Xiaomi, Apple ===== */
+/* Samsung: зажми заголовок «О бренде» на 1,5 секунды (или набери samsung)
+   Xiaomi: нажми 3 раза на заголовок «Случайный факт» (или набери xiaomi)
+   Apple: нажми 5 раз на текст внизу страницы (или набери apple) */
+var BR=[
+{id:'samsung',name:'Samsung',c1:'#3b5bdb',c2:'#5c7cfa',
+ about:'Samsung — южнокорейская компания, основанная в 1938 году. Телефоны линейки Galaxy она делает с 2009 года. Samsung известна яркими экранами, складными смартфонами и собственной оболочкой One UI.',
+ stats:[['1938','год основания'],['Galaxy','главная линейка'],['One UI','оболочка'],['S Pen','стилус в Ultra']],
+ hist:[['1938','Samsung основана в Южной Корее.'],['2009','выходит первый смартфон Galaxy.'],['2019','появляется первый складной Galaxy Fold.'],['2025','летом выходят Galaxy Z Fold7 и Z Flip7 с оболочкой One UI 8 на Android 16.'],['2026','в феврале представлена серия Galaxy S26, в продаже с 11 марта.']],
+ models:[
+  {name:'Samsung Galaxy S26 Ultra',tag:'Флагман 2026',img:'img/s26ultra.jpg',em:'🔍',d:'Топ серии S 2026 года.',m:'Экран 6,9 дюйма, функция Privacy Display для защиты от подглядывания, чип Snapdragon 8 Elite Gen 5 for Galaxy и батарея 5000 мАч.'},
+  {name:'Samsung Galaxy S26',tag:'2026',img:'img/s26.jpg',em:'📱',d:'Базовая модель серии S26.',m:'Экран 6,27 дюйма. Вместе с ней вышли S26+ с экраном 6,66 дюйма и S26 Ultra.'},
+  {name:'Samsung Galaxy Z Fold7',tag:'Складной 2025',img:'img/zfold7.jpg',em:'📖',d:'Складной флагман, который раскрывается в планшет.',m:'Внутренний экран 8 дюймов, вес 215 граммов, это легче, чем Galaxy S25 Ultra. Вышел в июле 2025.'},
+  {name:'Samsung Galaxy Z Flip7',tag:'Раскладушка 2025',img:'img/zflip7.jpg',em:'🔄',d:'Складной телефон-раскладушка.',m:'Вышел вместе с Fold7 в июле 2025 и стал одним из первых телефонов на One UI 8.'},
+  {name:'Samsung Galaxy Z Fold8',tag:'Складной 2026',img:'img/zfold8.jpg',em:'✨',d:'Новый складной Samsung 2026 года.',m:'Следующее поколение складных флагманов после Fold7. Подробности смотри на сайте Samsung.'},
+  {name:'Samsung Galaxy A56',tag:'Доступный',img:'img/a56.jpg',em:'💙',d:'Серия A для повседневных дел.',m:'Входит в список устройств, которые получают оболочку One UI 8.5.'}
+ ],
+ lines:[['S','флагманы с лучшими камерами и экранами.'],['Z','складные телефоны: Fold и Flip.'],['A','доступные модели для повседневных задач.'],['FE','облегчённые версии флагманов подешевле.']],
+ tech:[['One UI','оболочка Samsung. One UI 8 на Android 16 вышла с Fold7 и Flip7, а One UI 8.5 с Galaxy S26.'],['Galaxy AI','умные функции. В S26 их стало больше, есть связка с Gemini и Perplexity.'],['Privacy Display','функция Galaxy S26 Ultra, которая защищает экран от чужих взглядов.'],['7 лет обновлений','столько Samsung обещает для серии S26.'],['Samsung DeX','режим, который превращает телефон в мини-компьютер.']],
+ facts:['Samsung основана в 1938 году.','Galaxy Z Fold7 легче, чем Galaxy S25 Ultra.','Для серии S26 Samsung обещает 7 лет обновлений.','В Galaxy S26 Ultra появилась функция Privacy Display.','Серия Galaxy S26 вышла без моделей Edge и Pro: только S26, S26+ и Ultra.']},
+{id:'xiaomi',name:'Xiaomi',c1:'#ff6900',c2:'#ff9a3c',
+ about:'Xiaomi — китайская компания, основанная в 2010 году. Первый смартфон она выпустила в 2011-м и стала известна мощными телефонами по доступным ценам. Сейчас Xiaomi делает и флагманы с камерами Leica, и недорогие модели Redmi и POCO.',
+ stats:[['2010','год основания'],['Leica','партнёр по камерам'],['HyperOS','оболочка'],['17','номер флагманов']],
+ hist:[['2010','Xiaomi основана в Китае.'],['2011','выходит первый смартфон компании.'],['2025','в сентябре представлены Xiaomi 17, 17 Pro и 17 Pro Max. Число 16 компания пропустила.'],['2026','выходит Xiaomi 17 Ultra с обновлённым партнёрством с Leica, а в июле на Xiaomi 17 и 17 Ultra приходит HyperOS 3.3 на Android 17.']],
+ models:[
+  {name:'Xiaomi 17 Ultra',tag:'Камерофлагман 2026',img:'img/xiaomi17ultra.jpg',em:'📷',d:'Самый «фотографический» Xiaomi.',m:'В версии для Китая: основная камера с 1-дюймовым сенсором, 200-мегапиксельный телеобъектив Leica, батарея 6800 мАч и зарядка 90 Вт.'},
+  {name:'Xiaomi 17 Pro Max',tag:'Флагман 2025',img:'img/xiaomi17promax.jpg',em:'🖥️',d:'Флагман со вторым экраном сзади.',m:'Экран 6,9 дюйма и дополнительный дисплей 2,9 дюйма рядом с камерами. Продаётся в Китае.'},
+  {name:'Xiaomi 17 Pro',tag:'Флагман 2025',img:'img/xiaomi17pro.jpg',em:'📱',d:'Компактнее Pro Max, тоже со вторым экраном.',m:'Основной экран 6,3 дюйма и дополнительный 2,7 дюйма. На нём видно уведомления и музыку.'},
+  {name:'Xiaomi 17',tag:'Флагман 2025',img:'img/xiaomi17.jpg',em:'⚡',d:'Базовый флагман серии.',m:'Экран 6,3 дюйма с частотой 120 Гц. В глобальной версии батарея 6330 мАч и зарядка 100 Вт.'},
+  {name:'Xiaomi 15T Pro',tag:'Серия T',img:'img/xiaomi15tpro.jpg',em:'🧡',d:'Флагман серии T.',m:'Тоже получает HyperOS 3.3 на Android 17.'}
+ ],
+ lines:[['Xiaomi','главные флагманы: 17, 17 Pro и 17 Ultra.'],['Xiaomi T','телефоны серии T, например 15T Pro.'],['Redmi','недорогие смартфоны для всех.'],['POCO','упор на производительность за свои деньги.']],
+ tech:[['HyperOS','оболочка Xiaomi. Версия 3 основана на Android 16, а HyperOS 3.3 пришла на Android 17.'],['Leica','немецкая оптическая компания, партнёр Xiaomi по камерам.'],['Второй экран','небольшой дисплей сзади у 17 Pro и Pro Max: уведомления, музыка, селфи на основную камеру.'],['Быстрая зарядка','у Xiaomi 17 проводная 100 Вт и беспроводная 50 Вт.']],
+ facts:['Xiaomi основана в 2010 году.','После серии 15 Xiaomi сразу выпустила серию 17, число 16 пропущено.','У Xiaomi 17 Pro есть второй экран рядом с камерами.','Xiaomi 17 Ultra создана вместе с Leica.','Redmi и POCO — бренды, которые принадлежат Xiaomi.']},
+{id:'apple',name:'Apple',c1:'#0071e3',c2:'#4aa3ff',
+ about:'Apple — американская компания, основанная в 1976 году. Первый iPhone она показала в 2007 году. Телефоны Apple известны камерами, плавной работой и своей системой iOS.',
+ stats:[['1976','год основания'],['2007','первый iPhone'],['iOS 27','новая система'],['Duo','первый складной']],
+ hist:[['1976','Apple основана в США.'],['2007','Apple представляет первый iPhone.'],['2025','выходят iPhone 17, 17 Pro, 17 Pro Max и ультратонкий iPhone Air.'],['2026','9 сентября на событии «Surprise and shine» Apple показала iPhone 18 Pro, 18 Pro Max и первый складной iPhone Duo.'],['2027','обычный iPhone 18, iPhone 18e и iPhone Air 2 ждут весной.']],
+ models:[
+  {name:'iPhone 18 Pro',tag:'Новинка 2026',img:'img/iphone18pro.jpg',em:'🍎',d:'Флагман осени 2026 года.',m:'Дизайн близок к iPhone 17 Pro. Apple называет его самым быстрым iPhone за всю историю.'},
+  {name:'iPhone 18 Pro Max',tag:'Новинка 2026',img:'img/iphone18promax.jpg',em:'📱',d:'Самая большая модель Pro.',m:'Вышла вместе с iPhone 18 Pro на событии 9 сентября 2026.'},
+  {name:'iPhone Duo',tag:'Складной 2026',img:'img/iphoneduo.jpg',em:'📖',d:'Первый складной iPhone.',m:'Два экрана и складной внутренний дисплей. По словам Apple, в раскрытом виде это самый тонкий iPhone в истории.'},
+  {name:'iPhone 17 Pro Max',tag:'Флагман 2025',img:'img/iphone17promax.jpg',em:'🔭',d:'Топовый iPhone 2025 года.',m:'Предыдущий главный флагман Apple. Вышел осенью 2025.'},
+  {name:'iPhone Air',tag:'Ультратонкий',img:'img/iphoneair.jpg',em:'🪶',d:'Самый тонкий iPhone поколения.',m:'Вышел в 2025. Второе поколение, iPhone Air 2, ждут весной 2027.'},
+  {name:'iPhone 17',tag:'Базовый 2025',img:'img/iphone17.jpg',em:'🍏',d:'Базовая модель 2025 года.',m:'Следующий обычный iPhone 18 Apple выпустит только весной 2027.'}
+ ],
+ lines:[['iPhone','базовые модели для большинства людей.'],['Pro и Pro Max','лучшие камеры и самая мощная начинка.'],['Air','очень тонкий корпус.'],['e','упрощённые модели подешевле.'],['Duo','складной iPhone с двумя экранами.']],
+ tech:[['iOS','система Apple. iOS 27 стала доступна всем осенью 2026, а бета была ещё с июня.'],['Face ID','разблокировка телефона по лицу.'],['Dynamic Island','область вокруг фронтальной камеры, которая показывает уведомления и процессы.'],['Camera Control','отдельная кнопка на корпусе для управления камерой.']],
+ facts:['Первый iPhone показали в 2007 году.','Обычный iPhone 18 выйдет только весной 2027.','iPhone Duo — первый складной iPhone.','Бета iOS 27 стала доступна разработчикам в июне 2026.','С 1 сентября 2026 Apple возглавляет Джон Тернус вместо Тима Кука.']}
+];
+
+var foundSet={};
+function markFound(id){
+  if(foundSet[id])return 0;
+  foundSet[id]=1;
+  var n=Object.keys(foundSet).length;
+  document.getElementById('eggCount').textContent='Пасхалки: '+n+' из 4';
+  return n;
+}
+function showToast(text){
+  var t=document.getElementById('toast');
+  t.textContent=text;
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show')},2500);
+}
+function trophy(){showToast('🏆 Все 4 пасхалки найдены!')}
+
+function makeCard(m){
+  var c=document.createElement('div');
+  c.className='card';
+  c.innerHTML='<div class="pic"><img src="'+m.img+'" alt="'+m.name+'"></div>'+
+    '<div class="body"><h3>'+m.name+'</h3><span class="tag">'+m.tag+'</span><p>'+m.d+'</p><p class="more">'+m.m+'</p></div>';
+  var img=c.querySelector('img');
+  img.onerror=function(){
+    var d=document.createElement('div');
+    d.className='fake';
+    d.textContent=m.em;
+    img.replaceWith(d);
+  };
+  c.onclick=function(){c.classList.toggle('open')};
+  return c;
+}
+function glList(arr){
+  return arr.map(function(x){return '<div class="gl"><b>'+x[0]+'</b> — '+x[1]+'</div>'}).join('');
+}
+function buildBrand(b){
+  var s=document.createElement('section');
+  s.id=b.id;s.className='brand';s.hidden=true;
+  s.style.setProperty('--accent',b.c1);
+  s.style.setProperty('--accent2',b.c2);
+  var h='<div class="egg" style="background:linear-gradient(135deg,'+b.c1+','+b.c2+')"><h2>🥚 Пасхалка найдена!</h2><p>Секретный раздел про '+b.name+'</p></div>';
+  h+='<h2>О бренде '+b.name+'</h2><p>'+b.about+'</p>';
+  h+='<div class="stats">'+b.stats.map(function(x){return '<div class="stat"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('')+'</div>';
+  h+='<h2>История '+b.name+'</h2><div class="line">'+b.hist.map(function(x){return '<div><b>'+x[0]+'</b> — '+x[1]+'</div>'}).join('')+'</div>';
+  h+='<h2>Модели '+b.name+'</h2><div class="grid"></div>';
+  h+='<p style="color:var(--muted);font-size:.85rem">Нажми на карточку, чтобы узнать больше. Точные характеристики смотри на официальном сайте.</p>';
+  h+='<h2>Линейки '+b.name+'</h2><div class="gloss">'+glList(b.lines)+'</div>';
+  h+='<h2>Технологии '+b.name+'</h2><div class="gloss">'+glList(b.tech)+'</div>';
+  h+='<h2>Факт про '+b.name+'</h2><div class="box center"><div class="bfact">Нажми кнопку 👇</div><button class="btn bfbtn">Показать факт</button></div>';
+  h+='<div class="center" style="margin-top:20px"><button class="btn bhide">Спрятать пасхалку</button></div>';
+  s.innerHTML=h;
+  var g=s.querySelector('.grid');
+  b.models.forEach(function(m){g.appendChild(makeCard(m))});
+  s.querySelector('.bfbtn').onclick=function(){
+    s.querySelector('.bfact').textContent=b.facts[Math.floor(Math.random()*b.facts.length)];
+  };
+  s.querySelector('.bhide').onclick=function(){
+    s.hidden=true;
+    document.getElementById('nav'+b.id).hidden=true;
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+  document.querySelector('main').appendChild(s);
+  var a=document.createElement('a');
+  a.href='#'+b.id;a.id='nav'+b.id;a.hidden=true;a.textContent='🥚 '+b.name;
+  document.querySelector('nav').appendChild(a);
+}
+BR.forEach(buildBrand);
+
+function unlockBrand(id){
+  var s=document.getElementById(id);
+  var first=s.hidden;
+  s.hidden=false;
+  document.getElementById('nav'+id).hidden=false;
+  if(first){
+    showToast('🥚 Пасхалка найдена: '+id.charAt(0).toUpperCase()+id.slice(1)+'!');
+    if(markFound(id)===4)setTimeout(trophy,2800);
+  }
+  setTimeout(function(){s.scrollIntoView({behavior:'smooth'})},200);
+}
+
+function tapCounter(el,need,fn){
+  var c=0,t=null;
+  el.addEventListener('click',function(){
+    c++;
+    clearTimeout(t);
+    t=setTimeout(function(){c=0},1500);
+    if(c>=need){c=0;fn()}
+  });
+}
+tapCounter(document.getElementById('factTitle'),3,function(){unlockBrand('xiaomi')});
+tapCounter(document.getElementById('foot'),5,function(){unlockBrand('apple')});
+
+var bt=document.getElementById('brandTitle'),lp=null;
+bt.addEventListener('pointerdown',function(){
+  clearTimeout(lp);
+  lp=setTimeout(function(){unlockBrand('samsung')},1500);
+});
+['pointerup','pointerleave','pointercancel'].forEach(function(ev){
+  bt.addEventListener(ev,function(){clearTimeout(lp)});
+});
+bt.addEventListener('contextmenu',function(e){e.preventDefault()});
+
+var kb='';
+document.addEventListener('keydown',function(e){
+  if(!e.key||e.key.length!==1)return;
+  kb=(kb+e.key.toLowerCase()).slice(-7);
+  if(kb.slice(-7)==='samsung'){kb='';unlockBrand('samsung')}
+  else if(kb.slice(-6)==='xiaomi'){kb='';unlockBrand('xiaomi')}
+  else if(kb.slice(-5)==='apple'){kb='';unlockBrand('apple')}
+});
+
+/* ===== ТЕМА ===== */
+var tb=document.getElementById('themeBtn');
+tb.onclick=function(){
+  var r=document.documentElement;
+  var cur=r.getAttribute('data-theme');
+  var dark=cur?cur==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+  r.setAttribute('data-theme',dark?'light':'dark');
+  tb.textContent=dark?'🌙':'☀️';
+};
+
+/* ===== ИГРА: УГАДАЙ БРЕНД ===== */
+var gNames=['vivo','OPPO','Samsung','Xiaomi','Apple'];
+var gPool=[];
+facts.forEach(function(t){gPool.push({t:t,b:'vivo'})});
+oppoFacts.forEach(function(t){gPool.push({t:t,b:'OPPO'})});
+BR.forEach(function(b){b.facts.forEach(function(t){gPool.push({t:t,b:b.name})})});
+var gMask=/vivo|iQOO|ZEISS|OriginOS|X Fold\d*|OPPO|Reno|Find( [XN]\d*)?|ColorOS|Hasselblad|Samsung|Galaxy|One UI|Xiaomi|Redmi|POCO|Leica|HyperOS|Apple|iPhone|iOS|Duo/gi;
+var gQ=[],gI=0,gScore=0;
+function gStart(){
+  gQ=gPool.slice().sort(function(){return Math.random()-0.5}).slice(0,5);
+  gI=0;gScore=0;gShow();
+}
+function gShow(){
+  var box=document.getElementById('gameBox');
+  if(gI>=gQ.length){
+    var msg=gScore===5?'Отлично, ты эксперт по смартфонам! 🏆':gScore>=3?'Хороший результат! 👍':'Попробуй ещё раз, ты уже многое узнал на сайте 😉';
+    box.innerHTML='<h3>Результат: '+gScore+' из 5</h3><p>'+msg+'</p><button class="btn" onclick="gStart()">Сыграть снова</button>';
+    return;
+  }
+  var q=gQ[gI];
+  box.innerHTML='<b>Вопрос '+(gI+1)+' из 5</b><div class="gq">'+q.t.replace(gMask,'▒▒▒')+'</div><p style="margin:0">Что это за бренд?</p><div class="opts"></div>';
+  var o=box.querySelector('.opts');
+  gNames.forEach(function(n){
+    var b=document.createElement('button');
+    b.textContent=n;
+    b.onclick=function(){
+      o.querySelectorAll('button').forEach(function(x){x.disabled=true;if(x.textContent===q.b)x.classList.add('ok')});
+      if(n===q.b){gScore++}else{b.classList.add('bad')}
+      setTimeout(function(){gI++;gShow()},1100);
+    };
+    o.appendChild(b);
+  });
+}
+gStart();
+
+/* ===== КАЛЬКУЛЯТОР ЗАРЯДКИ ===== */
+function setCharge(m,w){
+  document.getElementById('cBat').value=m;
+  document.getElementById('cW').value=w;
+  calcCharge();
+}
+function calcCharge(){
+  var m=parseFloat(document.getElementById('cBat').value);
+  var w=parseFloat(document.getElementById('cW').value);
+  var r=document.getElementById('cRes');
+  if(!(m>0&&w>0)){r.textContent='Введи числа больше нуля.';return}
+  var wh=m*3.85/1000; /* 3,85 В — типичное напряжение батареи */
+  var min=Math.round(wh/w*60*1.3); /* 1,3 — запас на потери */
+  r.textContent='Примерно '+min+' минут от 0 до 100%. На деле больше: ближе к концу зарядка замедляется.';
+}
+calcCharge();
 </script>
 </body>
 </html>
