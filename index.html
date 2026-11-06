@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Смартфоны vivo</title>
+<style>
+:root{--bg:#f6f8ff;--card:#fff;--text:#1a1d2e;--muted:#5b6078;--accent:#415fff;--accent2:#7b61ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141f;--card:#1c1f2e;--text:#eef0ff;--muted:#a0a5c0}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+header{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-align:center;padding:48px 20px}
+header h1{margin:0 0 8px;font-size:2.4rem;letter-spacing:2px}
+header p{margin:0;opacity:.9}
+main{max-width:900px;margin:0 auto;padding:24px 16px}
+h2{margin:32px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.card{background:var(--card);border-radius:16px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.08);cursor:pointer;transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card h3{margin:0 0 6px;color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.more{display:none;margin-top:10px;font-size:.9rem}
+.card.open .more{display:block}
+.fact{background:var(--card);border-radius:16px;padding:20px;text-align:center}
+button{background:var(--accent);color:#fff;border:0;border-radius:12px;padding:12px 20px;font-size:1rem;cursor:pointer;margin-top:10px}
+#factText{font-size:1.1rem;min-height:3em}
+footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <h1>vivo</h1>
+  <p>Смартфоны, которые любят за камеру и дизайн</p>
+</header>
+<main>
+  <h2>О бренде</h2>
+  <p>vivo — китайская компания, которая делает смартфоны с 2009 года. Её телефоны известны яркими экранами, тонкими корпусами и упором на фото и видео.</p>
+
+  <h2>Линейки (нажми на карточку)</h2>
+  <div class="grid">
+    <div class="card"><h3>X</h3><p>Флагманы</p><p class="more">Самые мощные модели с упором на камеру. Часто делаются вместе с оптикой ZEISS.</p></div>
+    <div class="card"><h3>V</h3><p>Стиль и селфи</p><p class="more">Красивый дизайн и хорошая фронтальная камера. Для тех, кто любит снимать себя и друзей.</p></div>
+    <div class="card"><h3>Y</h3><p>Доступные</p><p class="more">Простые и недорогие смартфоны для повседневных задач: звонки, соцсети, видео.</p></div>
+    <div class="card"><h3>T</h3><p>Золотая середина</p><p class="more">Баланс цены и возможностей: хороший экран и скорость без переплаты.</p></div>
+    <div class="card"><h3>iQOO</h3><p>Для игр</p><p class="more">Отдельный игровой бренд vivo: упор на производительность и быструю зарядку.</p></div>
+  </div>
+
+  <h2>Случайный факт</h2>
+  <div class="fact">
+    <div id="factText">Нажми кнопку 👇</div>
+    <button onclick="newFact()">Показать факт</button>
+  </div>
+</main>
+<footer>Проект сделан в Кванториуме · не является официальным сайтом vivo</footer>
+<script>
+document.querySelectorAll('.card').forEach(function(c){
+  c.addEventListener('click',function(){c.classList.toggle('open')});
+});
+var facts=[
+  'vivo основана в 2009 году.',
+  'У vivo есть игровой суббренд iQOO.',
+  'Камеры флагманов vivo серии X разрабатывались вместе с ZEISS.',
+  'Название «vivo» напоминает латинское слово «жить».',
+  'Смартфоны vivo продаются во многих странах Азии, Европы и Африки.'
+];
+function newFact(){
+  document.getElementById('factText').textContent=facts[Math.floor(Math.random()*facts.length)];
+}
+</script>
+</body>
+</html>
